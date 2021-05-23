@@ -1333,6 +1333,35 @@ var vd = (function () {
     Base$1.prototype.propertyFilters = {};
 
     /**
+     * Base audio effect, modifies the audio output of a layer or movie
+     */
+    var Audio$1 = /** @class */ (function (_super) {
+        __extends(Audio, _super);
+        function Audio() {
+            return _super !== null && _super.apply(this, arguments) || this;
+        }
+        Audio.prototype.attach = function (target) {
+            _super.prototype.attach.call(this, target);
+        };
+        // subclasses must implement apply
+        /**
+         * Apply this effect to a target at the given time
+         *
+         * @param target
+         * @param reltime - the movie's current time relative to the layer
+         * (will soon be replaced with an instance getter)
+         * @abstract
+         */
+        Audio.prototype.apply = function (target, reltime) {
+            _super.prototype.apply.call(this, target, reltime);
+        };
+        return Audio;
+    }(Base$1));
+    // Watch to prevent them from being turned into proxies (which causes type
+    // errors with the web audio api).
+    Audio$1.prototype.publicExcludes = Base$1.prototype.publicExcludes.concat(['inputNode', 'outputNode']);
+
+    /**
      * Modifies the visual contents of a layer.
      */
     var Visual$1 = /** @class */ (function (_super) {
@@ -2382,6 +2411,7 @@ var vd = (function () {
      */
 
     var index$1 = /*#__PURE__*/Object.freeze({
+        Audio: Audio$1,
         Base: Base$1,
         Brightness: Brightness,
         Channels: Channels,
