@@ -273,7 +273,7 @@ describe('Layers', function () {
   describe('AudioSource', function () {
     let layer
     // Media is an abstract mixin, so make a concrete subclass here.
-    const CustomMedia = vd.layer.AudioSourceMixin(vd.layer.Base)
+    const CustomMedia = vd.layer.AudioSourceMixin(vd.layer.BaseAudio)
     let source
 
     beforeAll(function (done) {

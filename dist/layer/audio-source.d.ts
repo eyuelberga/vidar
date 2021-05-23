@@ -1,14 +1,12 @@
-import { AudioContext, IAudioNode } from 'standardized-audio-context';
-import { Base, BaseOptions } from './base';
+import { BaseAudio, BaseAudioOptions } from './base-audio-mixin';
 declare type Constructor<T> = new (...args: unknown[]) => T;
-interface AudioSource extends Base {
+interface AudioSource extends BaseAudio {
     readonly source: HTMLMediaElement;
-    readonly audioNode: IAudioNode<AudioContext>;
     playbackRate: number;
     /** The audio source node for the media */
     sourceStartTime: number;
 }
-interface AudioSourceOptions extends BaseOptions {
+interface AudioSourceOptions extends BaseAudioOptions {
     source: HTMLMediaElement;
     sourceStartTime?: number;
     muted?: boolean;
@@ -20,5 +18,5 @@ interface AudioSourceOptions extends BaseOptions {
  * A layer that gets its audio from an HTMLMediaElement
  * @mixin AudioSourceMixin
  */
-declare function AudioSourceMixin<OptionsSuperclass extends BaseOptions>(superclass: Constructor<Base>): Constructor<AudioSource>;
+declare function AudioSourceMixin<OptionsSuperclass extends BaseAudioOptions>(superclass: Constructor<BaseAudio>): Constructor<AudioSource>;
 export { AudioSource, AudioSourceOptions, AudioSourceMixin };
