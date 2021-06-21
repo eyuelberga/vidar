@@ -1,4 +1,4 @@
-import { AudioContext, IAudioNode } from 'standardized-audio-context'
+import { IAudioContext, AudioContext, IAudioNode } from 'standardized-audio-context'
 import { Movie } from '../movie'
 import { subscribe } from '../event'
 import { applyOptions, val } from '../util'
@@ -40,7 +40,6 @@ function AudioSourceMixin<OptionsSuperclass extends BaseAudioOptions> (superclas
     readonly source: HTMLMediaElement
 
     private __startTime: number
-    private _audioNode: IAudioNode<AudioContext>
     private _sourceStartTime: number
     private _unstretchedDuration: number
     private _playbackRate: number
@@ -94,7 +93,7 @@ function AudioSourceMixin<OptionsSuperclass extends BaseAudioOptions> (superclas
       // If attach and detach were called prior to this, audioNode will be
       // cached. The web audio can't create multiple audio nodes for one media
       // element.
-      this._audioNode = this.audioNode || movie.actx.createMediaElementSource(this.source)
+      this.audioNode = this.audioNode || movie.actx.createMediaElementSource(this.source)
       this.audioNode.connect(movie.actx.destination)
 
       // 2 - Call super.attach
@@ -132,13 +131,6 @@ function AudioSourceMixin<OptionsSuperclass extends BaseAudioOptions> (superclas
 
     stop () {
       this.source.pause()
-    }
-
-    /**
-     * The audio source node for the media
-     */
-    get audioNode () {
-      return this._audioNode
     }
 
     get playbackRate () {
