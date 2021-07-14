@@ -10,7 +10,7 @@
     "test": "spec"
   },
   "dependencies": {
-    "standardized-audio-context": "^25.1.13"
+    "standardized-audio-context": "^25.2.4"
   },
   "devDependencies": {
     "@types/dom-mediacapture-record": "^1.0.7",
