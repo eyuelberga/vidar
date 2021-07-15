@@ -10,6 +10,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 - `vd.layer.BaseAudio` (which all audio layers subclass).
 - `vd.effect.Audio` (which all audio effects subclass).
 - `vd.effect.Volume`.
+- `vd.effect.Panner`.
 
 ### Fixed
 - `Audio` and `Video` layers not detaching properly.
