@@ -1,4 +1,3 @@
-import { IAudioContext, AudioContext, IAudioNode } from 'standardized-audio-context'
 import { Movie } from '../movie'
 import { subscribe } from '../event'
 import { applyOptions, val } from '../util'

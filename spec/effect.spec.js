@@ -245,7 +245,6 @@ define(['resemblejs'], function (resemble) {
         })
       })
 
-
       describe('Shader', function () {
         let effect
 
