@@ -1,4 +1,4 @@
-import { AudioContext, IAudioNode, IAudioContext } from 'standardized-audio-context'
+import { AudioContext, IAudioNode } from 'standardized-audio-context'
 import { subscribe } from '../event'
 import { Movie } from '../movie'
 import { Base, BaseOptions } from './base'
@@ -7,7 +7,9 @@ import { applyOptions } from '../util'
 
 type Constructor<T> = new (...args: unknown[]) => T
 
-export type BaseAudioOptions = BaseOptions
+export interface BaseAudioOptions extends BaseOptions {
+  audioNode?: IAudioNode<AudioContext>
+}
 
 export interface BaseAudio extends Base {
   audioNode: IAudioNode<AudioContext>
@@ -116,6 +118,13 @@ export function BaseAudioMixin<OptionsSuperclass extends BaseOptions> (superclas
       audioEffects.forEach(effect => {
         effect.tryDetach()
       })
+    }
+
+    getDefaultOptions (): MixedBaseAudioOptions {
+      return {
+        ...superclass.prototype.getDefaultOptions(),
+        audioNode: undefined
+      }
     }
   }
   // watchPublic and publicExcludes should only care about properties that can
