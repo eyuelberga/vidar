@@ -8,6 +8,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 ## [Unreleased]
 ### Added
 - `vd.layer.BaseAudio` (which all audio layers subclass).
+- `vd.layer.Oscillator`.
 - `vd.effect.Audio` (which all audio effects subclass).
 - `vd.effect.Volume`.
 - `vd.effect.Panner`.
