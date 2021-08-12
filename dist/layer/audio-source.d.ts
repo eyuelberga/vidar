@@ -1,4 +1,4 @@
-import { BaseAudio, BaseAudioOptions } from './base-audio-mixin';
+import { BaseAudio, BaseAudioOptions } from './base-audio';
 declare type Constructor<T> = new (...args: unknown[]) => T;
 interface AudioSource extends BaseAudio {
     readonly source: HTMLMediaElement;

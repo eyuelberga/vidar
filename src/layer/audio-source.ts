@@ -1,7 +1,7 @@
 import { Movie } from '../movie'
 import { subscribe } from '../event'
 import { applyOptions, val } from '../util'
-import { BaseAudio, BaseAudioOptions } from './base-audio-mixin'
+import { BaseAudio, BaseAudioOptions } from './base-audio'
 
 type Constructor<T> = new (...args: unknown[]) => T
 
