@@ -437,8 +437,8 @@ export class Movie {
       return
     }
 
-    window.requestAnimationFrame(timestamp => {
-      this._render(repeat, timestamp)
+    window.requestAnimationFrame(() => {
+      this._render(repeat)
     }) // TODO: research performance cost
   }
 

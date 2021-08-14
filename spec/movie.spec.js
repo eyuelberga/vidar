@@ -303,6 +303,14 @@ describe('Movie', function () {
       expect(movie.currentTime).toBe(0)
     })
 
+    it('should never have a negative currentTime when playing', function (done) {
+      vd.event.subscribe(movie, 'movie.timeupdate', () => {
+        expect(movie.currentTime).toBeGreaterThanOrEqual(0)
+      })
+      vd.event.subscribe(movie, 'movie.ended', done)
+      movie.play()
+    })
+
     it('should be `recording` when recording', function () {
       movie.record({ frameRate: 10 })
       expect(movie.recording).toBe(true)
